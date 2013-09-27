@@ -1,8 +1,5 @@
 gem_group :development do
   gem 'bullet', '~> 4.6.0'
-  gem 'guard-rspec'
-  gem 'guard-livereload'
-  gem 'guard-cucumber'
 end
 
 gem_group :development, :test do
@@ -14,6 +11,10 @@ gem_group :development, :test do
   gem 'railroady'
   gem 'autotest'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'guard-cucumber'
 end
 
 gem_group :assets do
