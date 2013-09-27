@@ -26,7 +26,6 @@ end
 gem 'therubyracer'
 gem 'whenever', :require => false
 gem 'active_model_serializers'
-gem 'therubyracer'
 run "bundle install"
 
 application do
@@ -63,6 +62,9 @@ file '.rspec',<<-CONF
 --color
 -f d
 CONF
+
+run "guard init"
+run "rm public/index.html"
 
 git :init
 git add: "."
