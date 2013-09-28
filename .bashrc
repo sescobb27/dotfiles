@@ -59,7 +59,7 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 PS1="\[\033[01;32m\]\W\[\033[01;033m\]\$(__git_ps1 ' (%s)')\[\033[01;34m\]\$\[\033[00m\] "
-
+#export PS1="\\w\$(__git_ps1 '(%s)') \$ "
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -119,9 +119,8 @@ JAVA_HOME=/usr/local/java/jdk1.7.0_21
 export PATH=$PATH:$JAVA_HOME/bin
 JRE_HOME=/usr/local/java/jdk1.7.0_21/jre
 export PATH=$PATH:$JRE_HOME/bin
-export MYSQL_PASS="vpmSFP41:"
 export PATH=$PATH
-
+export PATH=$PATH:/home/simon/Downloads/lenskit-2.0/bin
 #mongodb path= /usr/local/mongodb
 #dbpath = /usr/local/var/mongodb
 
@@ -140,18 +139,21 @@ alias dbrol='rake db:rollback' #rolls the database schema back to the previous v
 alias dbse='rake db:seed' #seed database
 alias dbre='rake db:reset' #reset database
 alias dbcr='rake db:create' #create database
+alias dbtp='rake db:test:prepare' #prepare database for test
 alias routes='rake routes' #list all proyect routes
 alias gemi='gem install' #gem install
 alias rgmo='rails g model' #rails generate model
 alias rgco='rails g controller' #rails generate controller
 alias backbonei='rails g backbone:install' #initialize backbone.js on rails proyect
-alias rspeci='rails g rspec:install' #initialize backbone.js on rails proyect
+alias rspeci='rails g rspec:install' #initialize rspec on current proyect
 alias rgmi='rails g migration' #rails generate migration
 alias rru='rails r' #rails runner
 alias rse='rails s' #rails server
 alias rdbs='rails c --sandbox' #rails console secure mode 'rollback any modifications to database'
 alias rc='rails c' #rails console
 alias bi='bundle install' #bundle install dependencies
+alias rsmo='rails g rspec:model' #generates new rspec model
+alias rsco='rails g rspec:controller' #generates new rspec controller
 alias railsdir='cd ~/Documents/Rails/'
 # ==========RAILS ALIASES========================================
 # =============================================================================================
@@ -168,5 +170,5 @@ alias gitr='git rm' #remove files from repo
 alias gits='git status' #show repo current status
 alias giti='git init' #inti repo
 alias gitp='git pull' #pull request
-
+alias gitremote='git remote add origin https://github.com/sescobb27/'
 
