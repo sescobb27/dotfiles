@@ -173,6 +173,7 @@ gem 'omniauth' #https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 gem 'omniauth-twitter' #https://github.com/arunagw/omniauth-twitter
 gem 'omniauth-gplus' #https://github.com/samdunne/omniauth-gplus
 gem 'omniauth-facebook' #https://github.com/mkdynamic/omniauth-facebook
+gem "twitter-bootstrap-rails"
 
 run "bundle install"
 
@@ -206,6 +207,7 @@ generate "ember:bootstrap"
 generate "rspec:install"
 generate "cucumber:install"
 generate "devise:install"
+generate "bootstrap:install", "static"
 inject_into_file 'config/initializers/devise.rb', DEVISE, after: "config.omniauth_path_prefix = '/my_engine/users/auth'"
 
 prepend '.rspec',<<-CONF
