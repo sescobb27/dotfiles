@@ -1,4 +1,5 @@
 DEVISE = <<-OAUTH
+
   require 'omniauth-twitter'
   require 'omniauth-gplus'
   require 'omniauth-facebook'
@@ -149,13 +150,15 @@ end
 
 gem_group :development, :test do
   gem 'simplecov'
-  gem 'rspec-rails', '~> 2.14.0'
+  gem 'rspec-rails'
+  gem 'email_spec'
   gem 'cucumber-rails', :require => false
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'autotest'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'rb-readline'
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'guard-cucumber'
@@ -205,13 +208,12 @@ environment "config.ember.variant = :production", env: 'production'
 generate "ember:install", "--head"
 generate "ember:bootstrap"
 generate "rspec:install"
-generate "cucumber:install"
+generate "cucumber:install", '--capybara', '--rspec'
 generate "devise:install"
 generate "bootstrap:install", "static"
 inject_into_file 'config/initializers/devise.rb', DEVISE, after: "config.omniauth_path_prefix = '/my_engine/users/auth'"
 
 prepend '.rspec',<<-CONF
---color
 -f d
 CONF
 
@@ -219,25 +221,66 @@ inside('spec') do
   prepend 'spec_helper.rb', <<-SIMPLECOV
 require 'simplecov'
 SimpleCov.start 'rails'
-  SIMPLECOV
+SIMPLECOV
 end
+
 create_file 'spec/support/devise.rb', <<-DEVISE
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
 end
-  DEVISE
+DEVISE
+
+DATABASE_CLEANER = <<-DATABASE
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+DATABASE
+DATABASE_CLEANER.freeze
+
+EMAIL_SPEC = <<-EMAIL
+
+config.include(EmailSpec::Helpers)
+config.include(EmailSpec::Matchers)
+EMAIL
+EMAIL_SPEC.freeze
+
+inject_into_file 'spec/spec_helper.rb', "\nrequire 'email_spec'", after: "require 'rspec/rails'"
+inject_into_file 'spec/spec_helper.rb', DATABASE_CLEANER, after: "config.order = \"random\""
+inject_into_file 'spec/spec_helper.rb', EMAIL_SPEC, after: "RSpec.configure do |config|"
+
 
 inside('features/support') do
   prepend 'env.rb', <<-SIMPLECOV
 require 'simplecov'
 SimpleCov.start 'rails'
-  SIMPLECOV
+SIMPLECOV
 end
 
+FACTORY_GIRL = <<-GUARD
+
+watch(%r{^spec/factories/(.+)\.rb$}) do |m|
+  %W[
+    spec/models/\#{m[1].singularize}_spec.rb
+    spec/controllers/\#{m[1]}_controller_spec.rb
+    spec/requests/\#{m[1]}_spec.rb
+  ]
+end
+GUARD
+FACTORY_GIRL.freeze
+
 run "bundle exec guard init"
+
+prepend 'Guardfile', "require 'active_support/core_ext'\n"
+inject_into_file 'Guardfile', FACTORY_GIRL, after: "guard :rspec do"
 run "rm public/index.html"
 
 git :init
 git add: "."
 git commit: %Q{ -m 'Initial Commit From Custom Template' }
-rake "db:create"
