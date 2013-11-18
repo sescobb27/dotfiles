@@ -182,24 +182,24 @@ run "bundle install"
 
 application do
   <<-TEST
-config.generators do |g|
-   g.test_framework :rspec, fixture: true
-   g.fixture_replacement :factory_girl, dir: 'spec/factories'
-end
+  config.generators do |g|
+     g.test_framework :rspec, fixture: true
+     g.fixture_replacement :factory_girl, dir: 'spec/factories'
+  end
   TEST
 end
 
 environment nil, env: 'development' do
   <<-CONF
-config.after_initialize do
-  Bullet.enable = true
-  Bullet.alert = true
-  Bullet.bullet_logger = true
-  Bullet.console = true
-  Bullet.rails_logger = true
-end
-# emberjs
-config.ember.variant = :development
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+  end
+  # emberjs
+  config.ember.variant = :development
   CONF
 end
 
@@ -211,6 +211,8 @@ generate "rspec:install"
 generate "cucumber:install", '--capybara', '--rspec'
 generate "devise:install"
 generate "bootstrap:install", "static"
+generate "email_spec:steps"
+
 inject_into_file 'config/initializers/devise.rb', DEVISE, after: "config.omniauth_path_prefix = '/my_engine/users/auth'"
 
 prepend '.rspec',<<-CONF
@@ -246,8 +248,8 @@ DATABASE_CLEANER.freeze
 
 EMAIL_SPEC = <<-EMAIL
 
-config.include(EmailSpec::Helpers)
-config.include(EmailSpec::Matchers)
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 EMAIL
 EMAIL_SPEC.freeze
 
@@ -255,12 +257,12 @@ inject_into_file 'spec/spec_helper.rb', "\nrequire 'email_spec'", after: "requir
 inject_into_file 'spec/spec_helper.rb', DATABASE_CLEANER, after: "config.order = \"random\""
 inject_into_file 'spec/spec_helper.rb', EMAIL_SPEC, after: "RSpec.configure do |config|"
 
-
 inside('features/support') do
   prepend 'env.rb', <<-SIMPLECOV
 require 'simplecov'
 SimpleCov.start 'rails'
 SIMPLECOV
+create_file "email_spec.rb", "require 'email_spec/cucumber'"
 end
 
 FACTORY_GIRL = <<-GUARD
