@@ -80,7 +80,8 @@ DEVISE = <<-OAUTH
       :gplus => Here's an example Auth Hash available in request.env['omniauth.auth']:
       https://developers.google.com/+/api/latest/comments/list#try-it
 =end
-      config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'],  :strategy_class => OmniAuth::Strategies::Facebook
+config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'],  { :strategy_class => OmniAuth::Strategies::Facebook,
+      scope: 'email, user_birthday, user_interests, user_likes, user_location, user_checkins, publish_actions, read_friendlists' }
 =begin
       url: http://mkdynamic.github.io/omniauth-facebook/
       :facebook => Here's an example Auth Hash available in request.env['omniauth.auth']:
@@ -150,24 +151,24 @@ end
 
 gem_group :development, :test do
   gem 'simplecov'
-  gem 'rspec-rails'
-  gem 'email_spec'
+  gem "rspec", "~> 2.14.0"
+  gem 'rspec-rails', "~> 2.14.0"
+  gem "email_spec"
   gem 'cucumber-rails', :require => false
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'autotest'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem 'rb-readline'
-  gem 'guard-rspec'
-  gem 'guard-livereload'
-  gem 'guard-cucumber'
+  gem "guard"
+  gem "guard-rspec", require: false
+  gem "guard-livereload", require: false
+  gem "guard-cucumber", require: false
   gem "quiet_assets"
 end
 
 gem 'ember-rails'
 gem 'ember-source'
-
 gem 'therubyracer'
 gem 'whenever', :require => false
 gem 'active_model_serializers'
@@ -177,6 +178,11 @@ gem 'omniauth-twitter' #https://github.com/arunagw/omniauth-twitter
 gem 'omniauth-gplus' #https://github.com/samdunne/omniauth-gplus
 gem 'omniauth-facebook' #https://github.com/mkdynamic/omniauth-facebook
 gem "twitter-bootstrap-rails"
+gem 'newrelic_rpm'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 run "bundle install"
 
@@ -229,10 +235,15 @@ end
 create_file 'spec/support/devise.rb', <<-DEVISE
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
+  config.extend DeviseMacros, :type => :controller
 end
 DEVISE
 
-DATABASE_CLEANER = <<-DATABASE
+EMAIL_SPEC = <<-EMAIL
+
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
+  config.include FactoryGirl::Syntax::Methods
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
@@ -243,18 +254,10 @@ DATABASE_CLEANER = <<-DATABASE
   config.after(:each) do
     DatabaseCleaner.clean
   end
-DATABASE
-DATABASE_CLEANER.freeze
-
-EMAIL_SPEC = <<-EMAIL
-
-  config.include(EmailSpec::Helpers)
-  config.include(EmailSpec::Matchers)
 EMAIL
 EMAIL_SPEC.freeze
 
 inject_into_file 'spec/spec_helper.rb', "\nrequire 'email_spec'", after: "require 'rspec/rails'"
-inject_into_file 'spec/spec_helper.rb', DATABASE_CLEANER, after: "config.order = \"random\""
 inject_into_file 'spec/spec_helper.rb', EMAIL_SPEC, after: "RSpec.configure do |config|"
 
 inside('features/support') do
