@@ -43,7 +43,6 @@ ZSH_THEME="nebirhos"
 plugins=(git gem go golang heroku python pyenv rails4 rails3 ruby rake postgre rvm thor bundler cp copydir colored-man github gitignore ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
-
 # Customize to your needs...
 export PATH=$PATH:/home/simon/.rvm/gems/ruby-2.0.0-p247/bin:/home/simon/.rvm/gems/ruby-2.0.0-p247@global/bin:/home/simon/.rvm/rubies/ruby-2.0.0-p247/bin:/home/simon/.rvm/bin:/usr/local/heroku/bin:/usr/local/heroku/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/java/jdk1.7.0_21/bin:/usr/local/java/jdk1.7.0_21/jre/bin:/home/simon/.scala_sbt/sbt/bin:/usr/local/go/bin
 
@@ -56,4 +55,3 @@ setopt CORRECT CORRECT_ALL
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-source $HOME/.bash_config

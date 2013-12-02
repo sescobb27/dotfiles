@@ -160,10 +160,12 @@ gem_group :development, :test do
   gem 'autotest'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'spork-rails'
   gem "guard"
   gem "guard-rspec", require: false
   gem "guard-livereload", require: false
   gem "guard-cucumber", require: false
+  gem 'guard-spork'
   gem "quiet_assets"
 end
 
@@ -188,6 +190,7 @@ run "bundle install"
 
 application do
   <<-TEST
+
   config.generators do |g|
      g.test_framework :rspec, fixture: true
      g.fixture_replacement :factory_girl, dir: 'spec/factories'
@@ -197,6 +200,7 @@ end
 
 environment nil, env: 'development' do
   <<-CONF
+
   config.after_initialize do
     Bullet.enable = true
     Bullet.alert = true
@@ -222,17 +226,22 @@ generate "email_spec:steps"
 inject_into_file 'config/initializers/devise.rb', DEVISE, after: "config.omniauth_path_prefix = '/my_engine/users/auth'"
 
 prepend '.rspec',<<-CONF
+
 -f d
+--drb
 CONF
 
 inside('spec') do
   prepend 'spec_helper.rb', <<-SIMPLECOV
+
 require 'simplecov'
+require 'spork'
 SimpleCov.start 'rails'
 SIMPLECOV
 end
 
 create_file 'spec/support/devise.rb', <<-DEVISE
+
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.extend DeviseMacros, :type => :controller
@@ -254,6 +263,7 @@ EMAIL_SPEC = <<-EMAIL
   config.after(:each) do
     DatabaseCleaner.clean
   end
+  config.include Capybara::DSL
 EMAIL
 EMAIL_SPEC.freeze
 
@@ -262,13 +272,14 @@ inject_into_file 'spec/spec_helper.rb', EMAIL_SPEC, after: "RSpec.configure do |
 
 inside('features/support') do
   prepend 'env.rb', <<-SIMPLECOV
+
 require 'simplecov'
 SimpleCov.start 'rails'
 SIMPLECOV
 create_file "email_spec.rb", "require 'email_spec/cucumber'"
 end
 
-FACTORY_GIRL = <<-GUARD
+CUSTOM_GUARD = <<-GUARD
 
 watch(%r{^spec/factories/(.+)\.rb$}) do |m|
   %W[
@@ -278,14 +289,46 @@ watch(%r{^spec/factories/(.+)\.rb$}) do |m|
   ]
 end
 GUARD
-FACTORY_GIRL.freeze
+CUSTOM_GUARD.freeze
 
+run "bundle exec spork --bootstrap"
 run "bundle exec guard init"
 
-prepend 'Guardfile', "require 'active_support/core_ext'\n"
-inject_into_file 'Guardfile', FACTORY_GIRL, after: "guard :rspec do"
+SPORK = <<-GUARD
+
+require 'active_support/core_ext
+require 'active_support/inflector'
+
+guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' },
+               :rspec_env    => { 'RAILS_ENV' => 'test' } do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch('config/environments/test.rb')
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('Gemfile')
+  watch('Gemfile.lock')
+  watch('spec/spec_helper.rb') { :rspec }
+  watch(%r{features/support/}) { :cucumber }
+end
+GUARD
+SPORK.freeze
+
+prepend 'Guardfile', SPORK
+inject_into_file 'Guardfile', CUSTOM_GUARD, after: "guard :rspec do"
 run "rm public/index.html"
 
 git :init
 git add: "."
 git commit: %Q{ -m 'Initial Commit From Custom Template' }
+
+# TO-DO
+# guard 'rspec', all_after_pass: false, cli: '--drb' do
+
+# => spec_helper.rb
+# Spork.prefork do
+#   RSpec helpe STUFF
+# end
+# Spork.each_run do
+#   # This code will be run each time you run your specs.
+# end
+# => end spec_helper.rb
