@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/simon/Documents/Rails/GCMServerTest'
 let g:netrw_dirhist_2='/home/simon/Documents/Rails/GCMServerTest/app'
 let g:netrw_dirhist_3='/home/simon/Documents/Rails/GCMServerTest/app/models'
@@ -7,3 +7,5 @@ let g:netrw_dirhist_4='/home/simon/Documents/Rails/GCMServerTest'
 let g:netrw_dirhist_5='/home/simon/Documents/Rails/EjemploServer'
 let g:netrw_dirhist_6='/home/simon/Documents/Rails/GCMServerTest/db/migrate'
 let g:netrw_dirhist_7='/home/simon/app'
+let g:netrw_dirhist_8='/home/simon/Documents/Rails/GCMServerTest/db/migrate'
+let g:netrw_dirhist_9='/home/simon/Documents/Semestre/Sistemas Operativos/Control/Automatas/Estado/finito'
