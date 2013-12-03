@@ -58,7 +58,7 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
-PS1="\[\033[01;32m\]\W\[\033[01;033m\]\$(__git_ps1 ' (%s)')\[\033[01;34m\]\$\[\033[00m\] "
+PS1="\[\033[01;32m\]\$USER:\[\033[01;033m\] \[\033[01;34m\]\$(date)\[\033[00m\] \[\033[01;32m\]\W\[\033[01;033m\]\$(__git_ps1 ' (%s)')\[\033[01;34m\]\$\[\033[00m\]\[\033[01m\] "
 
 #export PS1="\\w\$(__git_ps1 '(%s)') \$ "
 unset color_prompt force_color_prompt
