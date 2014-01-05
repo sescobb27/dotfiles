@@ -53,14 +53,9 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
 PS1="
-\[\033[01;32m\]\$USER:\[\033[01;033m\] \[\033[01;34m\]\$(date +'%a %b %d %Y %r')\[\033[00m\]
-\[\033[01;32m\]\W\[\033[01;033m\]\$(__git_ps1 ' (%s)')\[\033[01;34m\]\$\[\033[00m\]\[\033[01m\] "
+\[\033[00m\]\[\033[01m\]╭\[\033[01;033m\] \[\033[01;32m\]\$USER:\[\033[01;033m\] \[\033[01;34m\]\$(date +'(%a) (%b/%d/%Y) %r')\[\033[00m\]
+\[\033[00m\]\[\033[01m\]╰ \[\033[01;033m\] \[\033[01;32m\](\W)\[\033[01;031m\]\$(__git_ps1 ' (%s)')\[\033[01;34m\]\$\[\033[00m\]\[\033[01m\] "
 
 #export PS1="\\w\$(__git_ps1 '(%s)') \$ "
 unset color_prompt force_color_prompt
@@ -113,3 +108,5 @@ fi
 if [ -f ~/.bash_config ]; then
   . ~/.bash_config
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
