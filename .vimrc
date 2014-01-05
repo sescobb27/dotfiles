@@ -1,8 +1,10 @@
 " .vimrc
-
+autocmd vimenter * if !argc() | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
 " load up pathogen and all bundles
 call pathogen#infect()
 call pathogen#helptags()
+
 
 syntax on " show syntax highlighting
 syntax enable
@@ -17,8 +19,8 @@ set ts=2 " set indent to 2 spaces
 set sts=2
 set sw=2
 set backspace=indent,eol,start
-set shiftwidth=2
 set expandtab " use spaces, not tab characters
+set shiftwidth=2
 set nocompatible " don't need to be compatible with old vim
 set number
 set showmatch " show bracket matches
@@ -87,3 +89,20 @@ function! RenameFile()
   endif
 endfunction
 map <leader>n :call RenameFile()<cr>
+
+" multi-purpose tab key (auto-complete)
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
+:map <f9> :make    - map the F9 key to run make
+
+set runtimepath+=/home/simon/.vim/
+autocmd FileType go compiler go
