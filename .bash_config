@@ -1,30 +1,34 @@
 #!/usr/bin/env sh
-export JAVA_HOME=/usr/local/java/jdk1.7.0_21
-export PATH=$PATH:$JAVA_HOME/bin
-export JRE_HOME=/usr/local/java/jdk1.7.0_21/jre
-export PATH=$PATH:$JRE_HOME/bin
-SBT="$HOME/.scala_sbt/sbt/bin"
+ #export JAVA_HOME=/usr/local/java/jdk1.7.0_21
+ #export PATH=$PATH:$JAVA_HOME/bin
+ #export JRE_HOME=/usr/local/java/jdk1.7.0_21/jre
+ #export PATH=$PATH:$JRE_HOME/bin
+
+export JAVA_HOME=/usr/local/java/jdk1.5.0_22
+export PATH=$JAVA_HOME/bin:$PATH
+export JRE_HOME=/usr/local/java/jdk1.5.0_22/jre
+export PATH=$JRE_HOME/bin:$PATH
+
 export PATH=$PATH:$SBT
-export POSTGRESQL_USER="sescob27"
-export POSTGRESQL_PASS=";vpmSFP41;"
-export FACEBOOK_KEY="696132433739116"
-export FACEBOOK_SECRET="cbfcad9dc9029bf3ab85ba0de1020a2f"
-#export TWITTER_KEY="1619050604-JA3g5ZKySE5AUSa9fsigEjXvI7rPx4Ab2XWPpFq"
-#export TWITTER_SECRET="Sfea8UYPzWMrYFFNdrgLnH3hVCAqeCvEqTPtrIgacNlzU"
-export TWITTER_KEY="8IHwNG1pDzhY2pYmMeZDmQ"
-export TWITTER_SECRET="Q1zpqwfn7ilpEEJdyDyyxMV85ualKtk6HD85OrE"
-export PATH=$PATH
-export PGHOST=localhost #postgresql default socket port
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
+#export GOMAXPROCS=8
 
-#mongodb path= /usr/local/mongodb
+if [ -f ~/.secrets ]; then
+  . ~/.secrets
+fi
+
+#mongodb path= /usr/local/bin/mongo*
 #dbpath = /usr/local/var/mongodb
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-alias operativos='cd ~/Documents/Semestre/Sistemas\ Operativos/Control/Automatas/Estado/finito/'
+# genymotion path
+export GENYMOTION="$HOME/.genymotion/genymotion"
+export PATH=$PATH:$GENYMOTION
+
+alias list_users='cat /etc/passwd | grep /bin/bash | grep -P ^[[:alnum:]]+ | cut -d: -f1'
 # =============================================================================================
 # ==========RAILS ALIASES========================================
 alias api='sudo apt-get install'
@@ -63,7 +67,7 @@ alias gita='git add' #add some changes, like new files
 alias gitpm='git push origin master' #push origin master
 alias gitpo='git push origin' #other branch
 alias gitp_p='git pull; git push origin' #git secure push first pull changes from remote repo, then push the changes COLLABORATION
-alias gitr='git rm' #remove files from repo
+alias gitrm='git rm' #remove files from repo
 alias gits='git status' #show repo current status
 alias giti='git init' #inti repo
 alias gitp='git pull --rebase' #pull request
@@ -71,19 +75,21 @@ alias gitpuo='git pull origin' #pull request for one branch
 alias gitdi='git diff' #show differences between local files and remote files
 alias gitdia='git diff --stage' #same as above but between added files and reomte files
 alias gitremote='git remote add origin git@github.com:sescobb27/'
-alias gitrc='git reset --soft HEAD^' #undo the last commit
-alias gitrcf='git reset --soft' #undo a file from last commit
-alias gitamend='git commit --amend' #add untracked files to last commit
-alias gitamendm=$gitamend+'-m' #same as amend but reset the git message
-alias gitrmc='git reset --hard HEAD^' #DANGER remove last commit and undo all changes
+alias gitrmc='git reset --soft HEAD^' #undo the last commit
+alias gitrmcf='git reset --soft' #undo a file from last commit
+alias gitref='git reset --' #reset file
+alias gitcam='git commit --amend' #add untracked files to last commit
+alias gitcamm="$gitamend -m" #same as amend but reset the git message
+alias gitRmc='git reset --hard HEAD^' #DANGER remove last commit and undo all changes
 alias gitbr='git checkout' #change to another branch
-alias gitmb='git merge' #merge two different branch
-alias gitdb='git branch -d' #delete a local branch unless it has unmerged commits
-alias gitDdb='git branch -D' #DANGER it deletes a branch without asking to merge commits
-alias gitlb='git branch -r' #list all remote branches
-alias gitsb='git remote show origin' #show all remote branches, local branches for pull and local branches for push
-alias gitcc='git checkout -b' #create and change to another branch
-alias gitclb='git remote prune origin' #clean up deleted remote branches
+alias gitmbr='git merge' #merge two different branch
+alias gitdbr='git branch -d' #delete a local branch unless it has unmerged commits
+alias gitDbr='git branch -D' #DANGER it deletes a branch without asking to merge commits
+alias gitlbr='git branch -r' #list all remote branches
+alias gitsbr='git remote show origin' #show all remote branches, local branches for pull and local branches for push
+alias gitcbr='git checkout -b' #create and change to another branch
+alias gitclbr='git remote prune origin' #clean up deleted remote branches
+alias gitdrb='git push origin --delete'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

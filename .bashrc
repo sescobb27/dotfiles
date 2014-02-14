@@ -109,4 +109,5 @@ if [ -f ~/.bash_config ]; then
   . ~/.bash_config
 fi
 
+export GOMAXPROCS=8
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
