@@ -1,37 +1,57 @@
 #!/usr/bin/env sh
- #export JAVA_HOME=/usr/local/java/jdk1.7.0_21
- #export PATH=$PATH:$JAVA_HOME/bin
- #export JRE_HOME=/usr/local/java/jdk1.7.0_21/jre
- #export PATH=$PATH:$JRE_HOME/bin
 
-export JAVA_HOME=/usr/local/java/jdk1.5.0_22
-export PATH=$JAVA_HOME/bin:$PATH
-export JRE_HOME=/usr/local/java/jdk1.5.0_22/jre
-export PATH=$JRE_HOME/bin:$PATH
-
-export PATH=$PATH:$SBT
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
-#export GOMAXPROCS=8
+PS1="
+╭\[\033[01;033m\] \[\033[01;32m\]\$USER:\[\033[01;033m\] \[\033[01;34m\]\$(date +'(%a) (%b/%d/%Y) %r')\[\033[00m\]
+╰ \[\033[01;033m\] \[\033[01;32m\](\W)\[\033[01;031m\]\$(__git_ps1 ' (%s)')\[\033[01;34m\]\$\[\033[00m\] "
 
 if [ -f ~/.secrets ]; then
   . ~/.secrets
 fi
 
-#mongodb path= /usr/local/bin/mongo*
-#dbpath = /usr/local/var/mongodb
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
 
-### Added by the Heroku Toolbelt
+if [ -f ~/.elasticsearch ]; then
+  . ~/.elasticsearch
+fi
+
+shopt -s checkwinsize
+shopt -s autocd
+
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=~/Documents/Go
+export GOMAXPROCS=8
+export GOARCH=amd64
+export GOOS=linux
+ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/platform-tools
+ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/tools:$ANDROID_TOOLS
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export JRE_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre
+export PATH=$PATH:$ANDROID_TOOLS
+
+export RUBY_GC_MALLOC_LIMIT=16MB
+export RUBY_GC_MALLOC_LIMIT_MAX=32MB
+export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.4
+export RUBY_GC_OLDMALLOC_LIMIT=16MB
+export RUBY_GC_OLDMALLOC_LIMIT_MAX=128MB
+export RUBY_GC_OLDMALLOC_LIMIT_GROWTH_FACTOR=1.2
+export RUBY_GC_HEAP_OLDOBJECT_LIMIT_FACTOR=1.3
+export LD_PRELOAD=/usr/local/lib/libjemalloc.so
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# genymotion path
-export GENYMOTION="$HOME/.genymotion/genymotion"
-export PATH=$PATH:$GENYMOTION
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+
+alias ls='ls --color=auto'
+alias ll='ls -alh --color=auto'
+alias cl='reset && clear'
 alias list_users='cat /etc/passwd | grep /bin/bash | grep -P ^[[:alnum:]]+ | cut -d: -f1'
+alias grep='grep --color=auto'
 # =============================================================================================
 # ==========RAILS ALIASES========================================
-alias api='sudo apt-get install'
 alias dbmi='rake db:migrate' #migrate database
 alias dbrol='rake db:rollback' #rolls the database schema back to the previous version
 alias dbse='rake db:seed' #seed database
@@ -43,7 +63,6 @@ alias routes='rake routes' #list all project routes
 alias gemi='gem install' #gem install
 alias rgmo='rails g model' #rails generate model
 alias rgco='rails g controller' #rails generate controller
-alias backbonei='rails g backbone:install' #initialize backbone.js on rails project
 alias rspeci='rails g rspec:install' #initialize rspec on current project
 alias cucum='rails g cucumber:install' #initialize cucumber on current project
 alias rgmi='rails g migration' #rails generate migration
@@ -66,6 +85,7 @@ alias gitca='git commit -am' #add all changes and commit them
 alias gita='git add' #add some changes, like new files
 alias gitpm='git push origin master' #push origin master
 alias gitpo='git push origin' #other branch
+alias gitpr='git push --recurse-submodules=check'
 alias gitp_p='git pull; git push origin' #git secure push first pull changes from remote repo, then push the changes COLLABORATION
 alias gitrm='git rm' #remove files from repo
 alias gits='git status' #show repo current status
@@ -79,7 +99,7 @@ alias gitrmc='git reset --soft HEAD^' #undo the last commit
 alias gitrmcf='git reset --soft' #undo a file from last commit
 alias gitref='git reset --' #reset file
 alias gitcam='git commit --amend' #add untracked files to last commit
-alias gitcamm="$gitamend -m" #same as amend but reset the git message
+alias gitcamm="$gitcam -m" #same as amend but reset the git message
 alias gitRmc='git reset --hard HEAD^' #DANGER remove last commit and undo all changes
 alias gitbr='git checkout' #change to another branch
 alias gitmbr='git merge' #merge two different branch
@@ -90,6 +110,5 @@ alias gitsbr='git remote show origin' #show all remote branches, local branches 
 alias gitcbr='git checkout -b' #create and change to another branch
 alias gitclbr='git remote prune origin' #clean up deleted remote branches
 alias gitdrb='git push origin --delete'
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# ==========GIT ALIASES========================================
+# =============================================================================================

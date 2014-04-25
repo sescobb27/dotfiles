@@ -54,6 +54,10 @@ fi
 
 # User specific aliases and functions
 
+if [ -f ~/.bash_config ]; then
+  . ~/.bash_config
+fi
+
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
