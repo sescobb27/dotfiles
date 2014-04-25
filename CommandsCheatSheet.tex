@@ -1,0 +1,196 @@
+\documentclass{article}
+
+\usepackage[a4paper,landscape,margin=1cm]{geometry}
+\usepackage{multicol}
+\usepackage{tabularx}
+\setlength{\columnsep}{1cm}
+\setlength{\parindent}{0pt}
+\usepackage[compact]{titlesec}
+
+
+\title{\vspace{-1.5cm} Commands Cheat Sheet}
+\author{An small guide}
+\date{}
+\begin{document}
+\newcommand{\command}[2]{
+  \texttt{#1} \hfill #2 \\
+}
+
+\begin{multicols*}{4}
+\maketitle
+\section*{Vim}
+\command{ESC}{normal mode}
+\command{Ctrl-c}{any mode to normal mode}
+\command{i}{insert mode}
+\command{v}{visual mode}
+\command{R}{replace mode}
+\command{k}{up}
+\command{j}{down}
+\command{h}{left}
+\command{l}{right}
+\command{gg}{Top}
+\command{G}{Bottom}
+\command{u}{undo}
+\command{Ctrl-r}{redo}
+\command{y}{copy}
+\command{yy}{copy line}
+\command{p}{paste after cursor}
+\command{P}{paste before cursor}
+\command{d}{delete}
+\command{dd}{delete line}
+\command{a}{insert after cursor}
+\command{A}{insert at end of line}
+\command{:<command>}{exec command}
+\command{:!<shell command>}{shell command}
+\command{/}{search}
+\command{n}{next match after search}
+\command{N}{backward match after search}
+\command{:\%s/<word>/<replace>/<flags>}{}
+\command{Shift-v}{visual mode line}
+\command{Ctrl-v}{Visual mode Block}
+\command{Ctrl-Shift-p}{Autocomplete}
+\command{\$}{end of line}
+\command{o}{after - new line insert}
+\command{O}{before - new line insert}
+\command{w}{move forward by word}
+\command{b}{move backward by word}
+\command{:vs}{vertical split}
+\command{:sp}{split}
+\command{Ctrl-h}{left splitted screen}
+\command{Ctrl-l}{right splitted screen}
+\command{Ctrl-j}{down splitted screen}
+\command{Ctrl-k}{up splitted screen}
+\command{:tabnew}{new tab}
+\command{\{}{up paragraph}
+\command{\}}{down paragraph}
+\command{q<buffer>}{record macro}
+\command{n@<buffer>}{replay macro n times}
+\command{r}{replace}
+\command{:w}{save or write}
+\command{:q}{exit or quit}
+\command{:<tap>}{many commands}
+\subsection*{Vim Git}
+\command{:Gstatus}{git status}
+\command{:Gdiff}{git diff}
+\command{:Gcommit}{git commit}
+\command{:Gremove}{git rm}
+\command{:Glog}{git log}
+\command{:Git}{git}
+\command{:help fugitive}{git help}
+\subsection*{Vim Go}
+\command{:Import <path>}{import lib}
+\command{:ImportAs <lname> <path>}{import lib}
+\command{:Godoc}{go documentation on cursor}
+\command{:Godef}{go definition on cursor}
+\command{,v}{vertical split GoDef}
+\command{,s}{split GoDef}
+\command{,t}{new tab GoDef}
+\command{:make}{build a project}
+\command{:GoBuild}{build a go project}
+\command{:GoRun}{go run}
+\command{:Gorun \%}{go run current file}
+\command{,r}{Gorun current file}
+\command{:GoTest}{go test}
+\command{:Lint}{print out mistakes}
+\command{:GoDeps}{package dependencies}
+\command{:Gofiles}{see all source files}
+\command{:GoOracleDescribe}{Code struct}
+\command{:GoOracleCallees}{Code struct}
+\command{:GoOracleCallers}{Code struct}
+\command{:GoOracleCallgraph}{Code struct}
+\command{:GoOracleImplements}{Code struct}
+\command{:GoOracleChannelPeers}{Code struct}
+
+\subsection*{Vim Rails}
+\command{:Emodel}{edit related model}
+\command{:Eview}{edit related view}
+\command{:Econtroller}{edit related controller}
+\command{:Smodel}{split related model}
+\command{:Sview}{split related view}
+\command{:Scontroller}{split related controller}
+\command{:Vmodel}{vsplit related model}
+\command{:Vview}{vsplit related view}
+\command{:Vcontroller}{vsplit related controller}
+\command{:Tmodel}{edit related model}
+\command{:Tview}{edit related view}
+\command{:Tcontroller}{edit related controller}
+\command{:help rails-navigation}{}
+\command{:Rake}{run rake tasks}
+\command{:.Rake}{rake task on current line}
+\command{:help rails-rake}{}
+\command{:Rails console}{}
+\command{:Rgenerate controller <name>}{}
+\command{:Rgenerate model <name>}{}
+\command{:help rails-scripts}{}
+\command{NERDTree}{}
+\command{:NERDTreeToggle}{display directory tree}
+\command{Ctrl-n}{NERDTreeToggle}
+\command{}{}
+
+\section*{Shell}
+\command{Ctrl-<left>}{Move by word to the left}
+\command{Ctrl-<right>}{Move by word to the right}
+\command{ll}{ls -alh --color=auto}
+\command{cl}{reset \&\& clear}
+\command{Ctrl-w}{delete backward word}
+\command{Ctrl-k}{delete to the end of line}
+\command{}{}
+\command{}{}
+
+\subsection*{Shell Rails}
+\command{dbmi}{rake db:migrate}
+\command{dbrol}{rake db:rollback}
+\command{dbse}{rake db:seed}
+\command{dbre}{rake db:reset}
+\command{dbcr}{rake db:create}
+\command{dbtp}{rake db:test:prepare}
+\command{dbdr}{rake db:drop}
+\command{routes}{rake routes}
+\command{gemi}{gem install}
+\command{rgmo <name><vars>}{rails g model}
+\command{rgco <name><methods>}{rails g controller}
+\command{rspeci}{rails g rspec:install}
+\command{cucum}{rails g cucumber:install}
+\command{rgmi <name><vars>}{rails g migration}
+\command{rru}{rails r}
+\command{rse}{rails s}
+\command{rdbs}{rails c --sandbox}
+\command{rc}{rails c}
+\command{bi}{bundle install}
+\command{rsmo}{rails g rspec:model}
+\command{rsco}{rails g rspec:controller}
+
+\subsection*{Shell Git}
+\command{gitcl <url>}{git clone}
+\command{gitcm <msg>}{git commit -m}
+\command{gitca}{git commit -am}
+\command{gita <file(s)>}{git add}
+\command{gitpm}{git push origin master}
+\command{gitpo <branch>}{git push origin}
+\command{gitpr}{git push --recurse-submodules=check}
+\command{gitrm <file(s)>}{git rm}
+\command{gits}{git status}
+\command{giti <path>}{git init}
+\command{gitpuo <branch>}{git pull origin}
+\command{gitdi <file(s)>}{git diff}
+\command{gitdia <file(s)>}{git diff --stage}
+\command{gitrmc}{git reset --soft HEAD\^}
+\command{gitrmcf <file>}{git reset --soft}
+\command{gitref <file(s)>}{git reset --}
+\command{gitcam <file(s)>}{git commit --amend}
+\command{gitRmc}{git reset --hard HEAD\^}
+\command{gitbr <branch>}{git checkout}
+\command{gitmbr <branch>}{git merge}
+\command{gitdbr <branch>}{git branch -d}
+\command{gitDbr <branch>}{git branch -D}
+\command{gitlbr <branch>}{git branch -r}
+\command{gitsbr}{git remote show origin}
+\command{gitcbr <branch>}{git checkout -b}
+\command{gitclbr}{git remote prune origin}
+\command{gitdrb}{git push origin --delete}
+
+
+\subsection*{Sublime}
+
+\end{multicols*}
+\end{document}
