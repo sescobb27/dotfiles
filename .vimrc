@@ -43,6 +43,9 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 set runtimepath+=/root/.vim/
 
+" set leader key to comma
+let mapleader = ","
+
 au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
 au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
