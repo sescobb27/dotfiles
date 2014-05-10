@@ -1,8 +1,11 @@
 " .vimrc
+filetype off
 execute pathogen#infect()
 set nocompatible " don't need to be compatible with old vim
 set fileencoding=utf-8
+set cursorline
 set encoding=utf-8
+set clipboard=unnamed
 set autoindent " set auto indent
 set ts=2 " set indent to 2 spaces
 set sts=2
@@ -10,6 +13,9 @@ set sw=2
 set backspace=indent,eol,start
 set expandtab " use spaces, not tab characters
 set shiftwidth=2
+set nowrap
+set ignorecase
+set smartcase
 set number
 set hlsearch " highlight all search matches
 set vb " enable visual bell (disable audio bell)
@@ -50,3 +56,15 @@ au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
 au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>r :GoRun %<CR>
+
+au BufRead,BufNewFile *.go set filetype=go
+
+"xmpfilter
+autocmd FileType ruby nmap <buffer> <F5> <Plug>(xmpfilter-mark)
+autocmd FileType ruby xmap <buffer> <F5> <Plug>(xmpfilter-mark)
+autocmd FileType ruby imap <buffer> <F5> <Plug>(xmpfilter-mark)
+
+autocmd FileType ruby nmap <buffer> <F4> <Plug>(xmpfilter-run)
+autocmd FileType ruby xmap <buffer> <F4> <Plug>(xmpfilter-run)
+autocmd FileType ruby imap <buffer> <F4> <Plug>(xmpfilter-run)
+
