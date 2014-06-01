@@ -5,7 +5,8 @@ set nocompatible " don't need to be compatible with old vim
 set fileencoding=utf-8
 set cursorline
 set encoding=utf-8
-set clipboard=unnamed
+"set clipboard=unnamed
+set clipboard=unnamedplus
 set autoindent " set auto indent
 set ts=2 " set indent to 2 spaces
 set sts=2
@@ -33,6 +34,8 @@ highlight Comment ctermfg=DarkGrey
 
 
 map <C-n> :NERDTreeToggle<CR>
+let g:multi_cursor_start_key='<C-d>'
+
 autocmd vimenter * if !argc() | NERDTree | endif
 noremap <C-m> :tabnew <CR>
 noremap <s-m> :tabclose <CR>
