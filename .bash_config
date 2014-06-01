@@ -28,9 +28,9 @@ export GOOS=linux
 export GOTRACEBACK=2
 ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/platform-tools
 ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/tools:$ANDROID_TOOLS
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-export JRE_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre
-export PATH=$PATH:$ANDROID_TOOLS
+export JAVA_HOME=/home/kiro/DEV_ENV/jdk1.7.0_51
+export JRE_HOME=/home/kiro/DEV_ENV/jdk1.7.0_51/jre
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH:$ANDROID_TOOLS
 
 export RUBY_GC_MALLOC_LIMIT=16MB
 export RUBY_GC_MALLOC_LIMIT_MAX=32MB
