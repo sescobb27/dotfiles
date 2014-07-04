@@ -1,0 +1,6 @@
+{
+      "sublimelinter_notes": true,
+      "sublimelinter_executable_map": {
+          "ruby": "/home/kiro/.rvm/rubies/ruby-2.1.1/bin/ruby"
+      }
+}

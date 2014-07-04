@@ -1,0 +1,12 @@
+{
+  "comp_lint_commands": [
+    {"cmd": ["go", "install"]},
+    {"cmd": ["go", "build"]}
+  ],
+  "autocomplete_builtins": true,
+  "autocomplete_closures": true,
+  "autocomplete_suggest_imports": true,
+  "gohtml_extensions": [".html.go, .gtpl"],
+  "env": {"GOPATH": "/home/kiro/Documents/Go", "GOROOT": "/home/kiro/DEV_ENV/go"},
+  "fmt_tab_indent": false
+}

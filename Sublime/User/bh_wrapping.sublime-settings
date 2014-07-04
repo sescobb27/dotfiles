@@ -1,0 +1,9 @@
+{
+    "wrapping": [
+      {
+          "enabled": true, "language_list": ["Ruby"], "language_filter": "whitelist", "entries": [
+              {"name": "Ruby: do", "brackets": ["do", "end"], "insert_style": ["indent_block"]}
+          ]
+      }
+    ]
+}

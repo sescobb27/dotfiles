@@ -1,0 +1,5 @@
+{
+    "high_visibility_enabled_by_default": true,
+    "search_threshold": 100000,
+    "ignore_threshold": true
+}
