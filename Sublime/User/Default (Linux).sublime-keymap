@@ -17,13 +17,10 @@
   { "keys": ["ctrl+alt+7"], "command": "toggle_comment", "args": { "block": false } },
   { "keys": ["ctrl+shift+alt+7"], "command": "toggle_comment", "args": { "block": true } },
   { "keys": ["ctrl+v"], "command": "paste_and_indent" },
-  { "keys": ["ctrl+ñ"], "command": "insert_snippet", "args": {"contents": "<div >${0:$SELECTION}</div>"}, "context":
-    [
-      { "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
-      { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
-    ]
-  },
   { "keys": ["ctrl+shift+k"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
+  { "keys": ["ctrl+k", "ctrl+b"], "command": "toggle_side_bar" },
+  { "keys": ["ctrl+z"], "command": "undo" },
+  { "keys": ["ctrl+shift+z"], "command": "redo" },
   // rails navigation
   { "keys": ["super+ctrl+m"], "command": "list_rails_models" },
   { "keys": ["super+ctrl+c"], "command": "list_rails_controllers" },
