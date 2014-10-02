@@ -20,7 +20,7 @@ shopt -s checkwinsize
 shopt -s autocd
 
 export GOROOT=~/DEV_ENV/go
-export PATH=$PATH:$GOROOT/bin
+PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export GOPATH=~/Documents/Go
 export GOMAXPROCS=8
 export GOARCH=amd64
@@ -30,7 +30,10 @@ ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/platform-tools
 ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/tools:$ANDROID_TOOLS
 export JAVA_HOME=/home/kiro/DEV_ENV/jdk1.7.0_51
 export JRE_HOME=/home/kiro/DEV_ENV/jdk1.7.0_51/jre
-export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH:$ANDROID_TOOLS
+export DEV_ENV=~/DEV_ENV
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH:$ANDROID_TOOLS:$DEV_ENV
+export LD_LIBRARY_PATH=/usr/local/lib
+export VIMRUNTIMEDIR=/usr/share/vim/vim74
 
 export RUBY_GC_MALLOC_LIMIT=16MB
 export RUBY_GC_MALLOC_LIMIT_MAX=32MB
@@ -41,16 +44,17 @@ export RUBY_GC_OLDMALLOC_LIMIT_GROWTH_FACTOR=1.2
 export RUBY_GC_HEAP_OLDOBJECT_LIMIT_FACTOR=1.3
 export LD_PRELOAD=/usr/local/lib/libjemalloc.so
 export PATH="/usr/local/heroku/bin:$PATH"
-
+export JAVA_OPTS=$JAVA_OPTS:" -Xms1024m -Xmx2048m -XX:MaxPermSize=512m -XX:-UseGCOverheadLimit"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 
-alias ls='ls -A --color=auto'
+alias ls='ls --color=auto'
 alias ll='ls -alh --color=auto'
 alias cl='reset && clear'
 alias list_users='cat /etc/passwd | grep /bin/bash | grep -P ^[[:alnum:]]+ | cut -d: -f1'
 alias grep='grep --color=auto'
+
 # =============================================================================================
 # ==========RAILS ALIASES========================================
 alias dbmi='rake db:migrate' #migrate database
@@ -61,11 +65,12 @@ alias dbcr='rake db:create' #create database
 alias dbtp='rake db:test:prepare' #prepare database for test
 alias dbdr='rake db:drop' #drop database
 alias routes='rake routes' #list all project routes
+alias 'rtasks'='rake -T' #list all rake tasks
 alias gemi='gem install' #gem install
 alias rgmo='rails g model' #rails generate model
 alias rgco='rails g controller' #rails generate controller
 alias rspeci='rails g rspec:install' #initialize rspec on current project
-alias cucum='rails g cucumber:install' #initialize cucumber on current project
+alias cucumi='rails g cucumber:install' #initialize cucumber on current project
 alias rgmi='rails g migration' #rails generate migration
 alias rru='rails r' #rails runner
 alias rse='rails s' #rails server
