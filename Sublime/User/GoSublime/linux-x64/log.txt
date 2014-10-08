@@ -1179,3 +1179,11 @@ created by main.(*Broker).Loop
 	/home/kiro/.config/sublime-text-2/Packages/GoSublime/src/gosubli.me/margo/broker.go:209 +0x24c
 
 
+
+** 2014-09-30 23:54:42.780996 **:
+GsPalette: /home/kiro/Documents/Go/src/github.com/sescobb27/proyecto-2travisci/models/location.go:1:1: expected 'package', found 'type'
+--------------------------------
+
+** 2014-09-30 23:54:45.668805 **:
+GsPalette: /home/kiro/Documents/Go/src/github.com/sescobb27/proyecto-2travisci/models/location.go:1:1: expected 'package', found 'type'
+--------------------------------

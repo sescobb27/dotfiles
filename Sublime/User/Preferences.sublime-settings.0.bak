@@ -24,7 +24,6 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Makefile"
 	],
 	"ignored_words":
 	[
