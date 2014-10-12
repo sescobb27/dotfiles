@@ -19,15 +19,17 @@
 	"color_scheme": "Packages/Color Scheme - Default/Twilight.tmTheme",
 	"dictionary": "Packages/Language - English/en_US.dic",
 	"ensure_newline_at_eof_on_save": true,
-	"font_face": "Menlo",
-	"font_size": 12,
+	"fold_buttons": true,
+	"font_size": 10,
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"Vintage",
 		"Makefile"
 	],
-	"ignored_words":
+	"indent_guide_options":
 	[
+		"draw_active"
 	],
 	"rulers":
 	[
