@@ -14,6 +14,7 @@
 		"DocBlockr",
 		"Emmet",
 		"Emmet Css Snippets",
+		"FileSystem Autocompletion",
 		"Git",
 		"GitGutter",
 		"GoSublime",
@@ -36,7 +37,6 @@
 		"RSpec (snippets and syntax)",
 		"Ruby on Rails snippets",
 		"Simple Rails Navigator",
-		"SublimeLinter",
-		"Theme - Flatland"
+		"SublimeLinter"
 	]
 }

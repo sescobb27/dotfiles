@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>for ${2:i} := 0; $2 &lt; ${1:count}; ${3:$2++} {
+  <string>for ${1:index}, ${2:value} := range ${3:array} {
 	$0
 }</string>
 	<key>name</key>

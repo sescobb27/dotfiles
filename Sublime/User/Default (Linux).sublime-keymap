@@ -30,5 +30,6 @@
   { "keys": ["super+ctrl+t"], "command": "list_rails_tests" },
   { "keys": ["super+ctrl+i"], "command": "list_rails_javascripts" },
   { "keys": ["super+ctrl+y"], "command": "list_rails_stylesheets" },
-  { "keys": ["ctrl+shift+i"], "command": "reindent"}
+  { "keys": ["ctrl+shift+i"], "command": "reindent"},
+  { "keys": ["ctrl+super+7"], "command": "file_system_comp_trigger"}
 ]
