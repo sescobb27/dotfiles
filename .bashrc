@@ -67,3 +67,6 @@ PS1="
 if [ -f /etc/profile.d/rvm.sh ]; then
 	source /etc/profile.d/rvm.sh
 fi
+
+export NVM_DIR="/home/kiro/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
