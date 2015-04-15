@@ -7,6 +7,7 @@
   "autocomplete_closures": true,
   "autocomplete_suggest_imports": true,
   "gohtml_extensions": [".html.go, .gtpl"],
-  "env": {"GOPATH": "/home/kiro/Documents/Go:/home/kiro/Documents/Go/ciudad-gourmet", "GOROOT": "/home/kiro/DEV_ENV/go"},
-  "fmt_tab_indent": false
+  "env": {"GOPATH": "/home/kiro/Documents/Go", "GOROOT": "/home/kiro/DEV_ENV/go"},
+  "fmt_tab_indent": true,
+  "fmt_tab_width": 4
 }

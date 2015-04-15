@@ -21,7 +21,9 @@
   { "keys": ["ctrl+k", "ctrl+b"], "command": "toggle_side_bar" },
   { "keys": ["ctrl+z"], "command": "undo" },
   { "keys": ["ctrl+shift+z"], "command": "redo" },
-  // rails navigation
+  { "keys": ["super+shift+up"], "command": "select_lines", "args": {"forward": false} },
+  { "keys": ["super+shift+down"], "command": "select_lines", "args": {"forward": true} },
+
   { "keys": ["super+ctrl+m"], "command": "list_rails_models" },
   { "keys": ["super+ctrl+c"], "command": "list_rails_controllers" },
   { "keys": ["super+ctrl+v"], "command": "list_rails_views" },

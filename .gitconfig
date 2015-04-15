@@ -1,0 +1,19 @@
+[user]
+  name = Simon Escobar Benitez
+  email = s.escob.b.27@gmail.com
+
+[color]
+  ui = true
+
+[credential "https://github.com/sescobb27"]
+  username = sescobb27
+  helper = cache --timeout=43200
+
+[merge]
+  tool = meld
+
+[help]
+  # Automatically correct and execute mistyped commands
+  autocorrect = 1
+[credential]
+	helper = store
