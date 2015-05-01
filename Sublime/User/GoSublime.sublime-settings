@@ -1,7 +1,9 @@
 {
   "comp_lint_commands": [
     {"cmd": ["go", "install"]},
-    {"cmd": ["go", "build"]}
+    {"cmd": ["go", "build"]},
+    {"cmd": ["go", "vet"]},
+    {"cmd": ["go", "lint"]}
   ],
   "autocomplete_builtins": true,
   "autocomplete_closures": true,

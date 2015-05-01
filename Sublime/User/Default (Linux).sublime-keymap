@@ -14,8 +14,8 @@
     "args": {"disable_auto_insert": true, "api_completions_only": true, "next_completion_if_showing": false},
     "context": [{ "key": "selector", "operator": "equal", "operand": "source.go" }]
   },
-  { "keys": ["ctrl+alt+7"], "command": "toggle_comment", "args": { "block": false } },
-  { "keys": ["ctrl+shift+alt+7"], "command": "toggle_comment", "args": { "block": true } },
+  { "keys": ["ctrl+keypad_divide"], "command": "toggle_comment", "args": { "block": false } },
+  { "keys": ["ctrl+shift+keypad_divide"], "command": "toggle_comment", "args": { "block": true } },
   { "keys": ["ctrl+v"], "command": "paste_and_indent" },
   { "keys": ["ctrl+shift+k"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
   { "keys": ["ctrl+k", "ctrl+b"], "command": "toggle_side_bar" },
@@ -24,14 +24,6 @@
   { "keys": ["super+shift+up"], "command": "select_lines", "args": {"forward": false} },
   { "keys": ["super+shift+down"], "command": "select_lines", "args": {"forward": true} },
 
-  { "keys": ["super+ctrl+m"], "command": "list_rails_models" },
-  { "keys": ["super+ctrl+c"], "command": "list_rails_controllers" },
-  { "keys": ["super+ctrl+v"], "command": "list_rails_views" },
-  { "keys": ["super+ctrl+h"], "command": "list_rails_helpers" },
-  { "keys": ["super+ctrl+x"], "command": "list_rails_fixtures" },
-  { "keys": ["super+ctrl+t"], "command": "list_rails_tests" },
-  { "keys": ["super+ctrl+i"], "command": "list_rails_javascripts" },
-  { "keys": ["super+ctrl+y"], "command": "list_rails_stylesheets" },
   { "keys": ["ctrl+shift+i"], "command": "reindent"},
   { "keys": ["ctrl+super+7"], "command": "file_system_comp_trigger"}
 ]

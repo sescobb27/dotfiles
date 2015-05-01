@@ -1,0 +1,9 @@
+{
+  "completion_active_list": {
+    "css-properties": true,
+    "html": true,
+    "javascript": true,
+    "jquery": true,
+    "sql": true,
+  }
+}
