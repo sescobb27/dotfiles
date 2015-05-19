@@ -32,23 +32,29 @@ PATH=$PATH:$GOROOT/bin
 PATH=$PATH:$GOPATH/bin
 export GOMAXPROCS=8
 export GOARCH=amd64
+export GOHOSTARCH=amd64
+export GOHOSTOS=linux
+export CGO_ENABLED=1
+export CXX=g++
+export GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0"
+export CC=gcc
 export GOOS=linux
 export GOTRACEBACK=2
 ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/platform-tools
 ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/tools:$ANDROID_TOOLS
 PATH=$ANDROID_TOOLS:$PATH
-export JAVA_HOME=/home/kiro/DEV_ENV/jdk1.7.0_75
-PATH=$JAVA_HOME/bin:$PATH
-export JRE_HOME=/home/kiro/DEV_ENV/jdk1.7.0_75/jre
-PATH=$JRE_HOME/bin:$PATH
+# export JAVA_HOME=/home/kiro/DEV_ENV/jdk1.7.0_75
+# PATH=$JAVA_HOME/bin:$PATH
+# export JRE_HOME=/home/kiro/DEV_ENV/jdk1.7.0_75/jre
+# PATH=$JRE_HOME/bin:$PATH
 export DEV_ENV=~/DEV_ENV
 export PATH=$PATH:$DEV_ENV/mongodb/bin
 export LD_LIBRARY_PATH=/usr/local/lib
 export VIMRUNTIMEDIR=/usr/share/vim/vim74
 export GCM_API_KEY='AIzaSyB13he0rtUpPsaQiQUHfqONWH1jzuHgxGk'
 
-export PORT=9000
-export NODE_ENV='production'
+# export PORT=9000
+# export NODE_ENV='production'
 
 export RUBY_GC_MALLOC_LIMIT=16MB
 export RUBY_GC_MALLOC_LIMIT_MAX=32MB
@@ -137,3 +143,4 @@ alias gitdrb='git push origin --delete'
 alias stash='git stash'
 # ==========GIT ALIASES========================================
 # =============================================================================================
+alias ports='netstat -tulpn'
