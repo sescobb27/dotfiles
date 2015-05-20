@@ -19,11 +19,14 @@
 		"GoOracle",
 		"GoSublime",
 		"HTML5",
+		"JSHint",
 		"nginx",
 		"Package Control",
 		"PgSQL",
 		"Pretty JSON",
 		"Protocol Buffer Syntax",
+		"RSpec",
+		"rspec-snippets",
 		"RuboCop",
 		"Ruby Markers",
 		"Ruby on Rails snippets",
@@ -33,7 +36,6 @@
 		"SublimeLinter-contrib-gotype",
 		"SublimeLinter-contrib-govet",
 		"SublimeLinter-jshint",
-		"SublimeLinter-rubocop",
 		"SublimeLinter-ruby"
 	]
 }

@@ -1,10 +1,18 @@
 {
+  "comp_lint_enabled": true,
   "comp_lint_commands": [
     {"cmd": ["go", "install"]},
     {"cmd": ["go", "build"]},
     {"cmd": ["go", "vet"]},
-    {"cmd": ["go", "lint"]}
+    {"cmd": ["golint *.go"], "shell": true}
   ],
+  "on_save": [
+    // run comp-lint when you save,
+    // naturally, you can also bind this command `gs_comp_lint`
+    // to a key binding if you want
+    {"cmd": "gs_comp_lint"}
+  ],
+  "fmt_cmd": ["goimports"],
   "autocomplete_builtins": true,
   "autocomplete_closures": true,
   "autocomplete_suggest_imports": true,
