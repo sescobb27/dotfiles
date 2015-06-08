@@ -1,20 +1,25 @@
 [user]
-  name = Simon Escobar Benitez
-  email = s.escob.b.27@gmail.com
+	name = sescobb27
+	email = s.escob.b.27@gmail.com
 
 [color]
-  ui = true
+	ui = true
 
-[credential "https://github.com/sescobb27"]
-  username = sescobb27
-  helper = cache --timeout=43200
+[credential "https://github.com"]
+	username = sescobb27
+	helper = cache --timeout=43200
 
 [merge]
-  tool = meld
+	tool = meld
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
+
+[push]
+	default = simple
 
 [help]
-  # Automatically correct and execute mistyped commands
-  autocorrect = 1
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
 
 [credential]
 	helper = store
