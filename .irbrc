@@ -1,6 +1,5 @@
 require 'rubygems' unless defined? Gem
 require 'rb-readline'
-require 'hirb'
 require 'fancy_irb'
 require 'awesome_print'
 
@@ -16,7 +15,6 @@ FancyIrb.start colorize: {
   output: true
 }
 
-Hirb.enable
 AwesomePrint.irb!
 
 def own_methods var

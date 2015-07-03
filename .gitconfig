@@ -23,3 +23,5 @@
 
 [credential]
 	helper = store
+[hub]
+	protocol = https

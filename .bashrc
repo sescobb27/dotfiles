@@ -64,9 +64,3 @@ PS1="
 ╰ \[\033[01;033m\] \[\033[01;32m\](\W)\[\033[01;031m\]\$(__git_ps1 ' (%s)')\[\033[01;34m\]\$\[\033[00m\] "
 
 /usr/bin/setxkbmap -option 'ctrl:nocaps, shift:both_capslock'
-if [ -f /etc/profile.d/rvm.sh ]; then
-	source /etc/profile.d/rvm.sh
-fi
-
-export NVM_DIR="/home/kiro/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
