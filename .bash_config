@@ -20,6 +20,10 @@ if [ -f /etc/bash_completion.d/docker.io ]; then
   . /etc/bash_completion.d/docker.io
 fi
 
+HUB_COMPLETION_PATH=$GOPATH:/src/github.com/github/hub/etc/hub.bash_completion.sh
+if [ -f $HUB_COMPLETION_PATH ]; then
+  . $HUB_COMPLETION_PATH
+fi
 shopt -s checkwinsize
 shopt -s autocd
 
@@ -30,6 +34,7 @@ export GOROOT=~/DEV_ENV/go
 export GOPATH=~/Documents/Go
 PATH=$PATH:$GOROOT/bin
 PATH=$PATH:$GOPATH/bin
+PATH=$PATH:~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin
 export GOMAXPROCS=8
 export GOARCH=amd64
 export GOHOSTARCH=amd64
@@ -40,6 +45,7 @@ export GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0"
 export CC=gcc
 export GOOS=linux
 export GOTRACEBACK=2
+export ANDROID_HOME=~/IDEs/adt-bundle-linux/sdk
 ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/platform-tools
 ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/tools:$ANDROID_TOOLS
 PATH=$ANDROID_TOOLS:$PATH
@@ -72,6 +78,7 @@ export JAVA_OPTS=$JAVA_OPTS:" -Xms1024m -Xmx2048m -XX:MaxPermSize=512m -XX:-UseG
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+eval "$(hub alias -s)"
 
 alias ls='ls --color=auto'
 alias ll='ls -alh --color=auto'
@@ -144,3 +151,4 @@ alias stash='git stash'
 # ==========GIT ALIASES========================================
 # =============================================================================================
 alias ports='netstat -tulpn'
+eval "$(direnv hook bash)"
