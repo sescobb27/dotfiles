@@ -5,20 +5,22 @@
 	"installed_packages":
 	[
 		"All Autocomplete",
+		"Angular Material Snippets",
 		"AngularJS",
 		"AngularJS Snippets",
 		"Better Completion",
 		"Better RSpec",
 		"BracketHighlighter",
+		"Cap'n Proto Syntax",
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
 		"Emmet",
-		"FileSystem Autocompletion",
 		"GitGutter",
 		"Godef",
-		"GoOracle",
 		"GoSublime",
 		"HTML5",
+		"Ionic Framework Snippets",
+		"JavaScriptNext - ES6 Syntax",
 		"JSHint",
 		"nginx",
 		"Package Control",
@@ -28,14 +30,24 @@
 		"RSpec",
 		"rspec-snippets",
 		"RuboCop",
+		"Ruby Debugger",
 		"Ruby Markers",
 		"Ruby on Rails snippets",
+		"Sass",
+		"SASS Snippets",
 		"Sourcegraph",
+		"sublime-protobuf-syntax",
+		"SublimeHaskell",
 		"SublimeLinter",
 		"SublimeLinter-contrib-golint",
 		"SublimeLinter-contrib-gotype",
 		"SublimeLinter-contrib-govet",
 		"SublimeLinter-jshint",
-		"SublimeLinter-ruby"
+		"SublimeLinter-ruby",
+		"SublimeREPL"
+	],
+	"repositories":
+	[
+		"https://github.com/vihangm/sublime-protobuf-syntax"
 	]
 }
