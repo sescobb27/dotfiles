@@ -23,5 +23,23 @@
 
 [credential]
 	helper = store
+
 [hub]
 	protocol = https
+
+[alias]
+  a = add
+  cam = commit --amend
+  cbr = checkout -b
+  cl = clone
+  cm = commit -m
+  di = diff
+  dis = diff --stage
+  list-branch = branch -r
+  p = pull --rebase
+  pm = push origin master
+  po = push origin
+  pr = push --recurse-submodules=check
+  s = status
+  undo = reset --soft HEAD^
+  llog = log --date=local
