@@ -10,12 +10,11 @@
 	"ensure_newline_at_eof_on_save": true,
 	"fold_buttons": true,
 	"font_face": "Source Code Pro",
-	"font_size": 10,
+	"font_size": 11,
 	"gopath": "$HOME/Go",
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Vintage"
 	],
 	"indent_guide_options":
 	[

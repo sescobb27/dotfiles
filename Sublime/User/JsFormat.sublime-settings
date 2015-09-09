@@ -1,0 +1,7 @@
+{
+  "jsbeautifyrc_files": true,
+  "jslint_happy": true,
+  "keep_array_indentation": true,
+  "keep_function_indentation": true,
+  "format_on_save": true
+}

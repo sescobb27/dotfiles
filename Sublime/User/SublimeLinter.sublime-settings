@@ -1,12 +1,24 @@
 {
     "user": {
-        "debug": false,
+        "debug": true,
         "delay": 0.25,
         "error_color": "D02000",
         "gutter_theme": "Packages/SublimeLinter/gutter-themes/Default/Default.gutter-theme",
         "gutter_theme_excludes": [],
         "lint_mode": "save only",
         "linters": {
+            "elixirc": {
+                "@disable": false,
+                "args": [],
+                "excludes": [],
+                "include_dirs": [],
+                "pa": []
+            },
+            "elixirlinter": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
             "golint": {
                 "@disable": false,
                 "args": [],
@@ -42,7 +54,9 @@
         "no_column_highlights_line": false,
         "passive_warnings": false,
         "paths": {
-            "linux": [],
+            "linux": [
+                "/home/kiro/.nvm/versions/node/v0.12.7/bin"
+            ],
             "osx": [],
             "windows": []
         },

@@ -1,0 +1,24 @@
+{
+  "codeintel_scan_exclude_dir": [
+    "tmp",
+    ".tmp",
+    "public",
+    ".git",
+    "log",
+    "build",
+    "min",
+    "dist"
+  ],
+  "codeintel_language_settings": {
+    "Ruby": {
+      "ruby": "/home/kiro/.rvm/rubies/ruby-2.2.2/bin/ruby",
+      "rubyExtraPaths": ["/home/kiro/.rvm/gems/ruby-2.2.2:/home/kiro/.rvm/gems/ruby-2.2.2/gems"]
+    },
+    "JavaScript": {
+      "codeintel_scan_extra_dir": [],
+      "codeintel_scan_exclude_dir":["/build/", "/min/"],
+      "codeintel_max_recursive_dir_depth": 10,
+      "codeintel_selected_catalogs": ["jQuery"]
+    }
+  }
+}

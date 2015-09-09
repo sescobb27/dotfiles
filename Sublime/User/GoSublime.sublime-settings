@@ -1,4 +1,5 @@
 {
+  "margo_oom": 2000,
   "comp_lint_enabled": true,
   "comp_lint_commands": [
     {"cmd": ["go", "install"]},
@@ -17,7 +18,10 @@
   "autocomplete_closures": true,
   "autocomplete_suggest_imports": true,
   "gohtml_extensions": [".html.go, .gtpl"],
-  "env": {"GOPATH": "/home/kiro/Documents/Go", "GOROOT": "/home/kiro/DEV_ENV/go"},
+  "env": {
+    "GOPATH": "/home/kiro/.gvm/pkgsets/go1.5/global:/home/kiro/Documents/Go",
+    "GOROOT": "/home/kiro/.gvm/gos/go1.5"
+  },
   "fmt_tab_indent": true,
   "fmt_tab_width": 4
 }
