@@ -24,7 +24,6 @@ set nowrap
 set ignorecase
 set smartcase
 set hlsearch " highlight all search matches
-set noerrorbells visualbell " enable visual bell (disable audio bell)
 set ruler " show row and column in footer
 set scrolloff=2 " minimum lines above/below cursor
 set laststatus=2 " always show status bar
@@ -38,10 +37,7 @@ highlight Comment ctermfg=DarkGrey
 map <C-n> :NERDTreeToggle<CR>
 let g:multi_cursor_start_key='<C-d>'
 
-autocmd vimenter * if !argc() | NERDTree | endif
-noremap <C-m> :tabnew <CR>
-noremap <s-m> :tabclose <CR>
-noremap <C-b> :tabNext <CR>
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 noremap <C-l> :nohlsearch<CR>
 function! InsertTabWrapper()
     let col = col('.') - 1
@@ -52,7 +48,6 @@ function! InsertTabWrapper()
     endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-set runtimepath+=~/.vim
 
 " set leader key to comma
 let mapleader = ","
