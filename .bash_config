@@ -1,9 +1,4 @@
 #!/usr/bin/env sh
-
-PS1="
-╭\[\033[01;033m\] \[\033[01;32m\]\$USER:\[\033[01;033m\] \[\033[01;34m\]\$(date +'(%a) (%b/%d/%Y) %r')\[\033[00m\]
-╰ \[\033[01;033m\] \[\033[01;32m\](\W)\[\033[01;031m\]\$(__git_ps1 ' (%s)')\[\033[01;34m\]\$\[\033[00m\] "
-
 if [ -f ~/.secrets ]; then
   . ~/.secrets
 fi
@@ -12,30 +7,23 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-if [ -f ~/.elasticsearch ]; then
-  . ~/.elasticsearch
-fi
-
 if [ -f /etc/bash_completion.d/docker.io ]; then
   . /etc/bash_completion.d/docker.io
 fi
 
-HUB_COMPLETION_PATH=$GOPATH:/src/github.com/github/hub/etc/hub.bash_completion.sh
+HUB_COMPLETION_PATH="$GOPATH/src/github.com/github/hub/etc/hub.bash_completion.sh"
 if [ -f $HUB_COMPLETION_PATH ]; then
   . $HUB_COMPLETION_PATH
 fi
-shopt -s checkwinsize
-shopt -s autocd
 
 # search and kill
 # ps aux | grep rails | awk 'NR == 1 { print $2 };' | xargs sudo kill -9
 export EDITOR=vim
-export GOROOT=~/DEV_ENV/go
-export GOPATH=~/Documents/Go
 PATH=$PATH:$GOROOT/bin
 PATH=$PATH:$GOPATH/bin
 PATH=$PATH:~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin
 export GOMAXPROCS=8
+export GOROOT_BOOTSTRAP=/home/kiro/.gvm/gos/go1.4
 export GOARCH=amd64
 export GOHOSTARCH=amd64
 export GOHOSTOS=linux
@@ -45,22 +33,7 @@ export GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0"
 export CC=gcc
 export GOOS=linux
 export GOTRACEBACK=2
-export ANDROID_HOME=~/IDEs/adt-bundle-linux/sdk
-ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/platform-tools
-ANDROID_TOOLS=~/IDEs/adt-bundle-linux/sdk/tools:$ANDROID_TOOLS
-PATH=$PATH:$ANDROID_TOOLS
-# export JAVA_HOME=/home/kiro/DEV_ENV/jdk1.7.0_75
-# PATH=$JAVA_HOME/bin:$PATH
-# export JRE_HOME=/home/kiro/DEV_ENV/jdk1.7.0_75/jre
-# PATH=$JRE_HOME/bin:$PATH
-export DEV_ENV=~/DEV_ENV
-PATH=$PATH:$DEV_ENV/mongodb/bin
 export LD_LIBRARY_PATH=/usr/local/lib
-export VIMRUNTIMEDIR=/usr/share/vim/vim74
-export GCM_API_KEY='AIzaSyB13he0rtUpPsaQiQUHfqONWH1jzuHgxGk'
-
-# export PORT=9000
-# export NODE_ENV='production'
 
 export RUBY_GC_MALLOC_LIMIT=16MB
 export RUBY_GC_MALLOC_LIMIT_MAX=32MB
@@ -73,21 +46,13 @@ export PUMA_MIN_THREADS=2
 export PUMA_MAX_THREADS=16
 
 PATH=$PATH:/usr/local/heroku/bin
-export JAVA_OPTS=$JAVA_OPTS:" -Xms1024m -Xmx2048m -XX:MaxPermSize=512m -XX:-UseGCOverheadLimit"
+# export JAVA_OPTS=$JAVA_OPTS:" -Xms1024m -Xmx2048m -XX:MaxPermSize=512m -XX:-UseGCOverheadLimit"
+export SCALA_HOME=/home/kiro/dev/scala
+PATH=$PATH:$SCALA_HOME/bin
+PATH=$PATH:$HOME/Android/Sdk/platform-tools:$HOME/Android/Sdk/tools
 
-export NVM_DIR="/home/kiro/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-eval "$(hub alias -s)"
-
-alias ls='ls --color=auto'
-alias ll='ls -alh --color=auto'
 alias cl='reset && clear'
 alias list_users='cat /etc/passwd | grep /bin/bash | grep -P ^[[:alnum:]]+ | cut -d: -f1'
-alias grep='grep --color=auto'
 
 # =============================================================================================
 # ==========RAILS ALIASES========================================
@@ -154,5 +119,3 @@ alias stash='git stash'
 # ==========GIT ALIASES========================================
 # =============================================================================================
 alias ports='netstat -tulpn'
-eval "$(direnv hook bash)"
-
