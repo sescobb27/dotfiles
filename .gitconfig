@@ -13,9 +13,10 @@
 	tool = meld
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
+	stat = true
 
 [push]
-	default = simple
+	default = tracking
 
 [help]
 	# Automatically correct and execute mistyped commands
@@ -28,18 +29,23 @@
 	protocol = https
 
 [alias]
-  a = add
-  cam = commit --amend
-  cbr = checkout -b
-  cl = clone
-  cm = commit -m
-  di = diff
-  dis = diff --stage
-  list-branch = branch -r
-  p = pull --rebase
-  pm = push origin master
-  po = push origin
-  pr = push --recurse-submodules=check
-  s = status
-  undo = reset --soft HEAD^
-  llog = log --date=local
+	a = add
+	cam = commit --amend
+	cbr = checkout -b
+	cl = clone
+	cm = commit -m
+	di = diff
+	dis = diff --stage
+	list-branch = branch -r
+	p = pull --rebase
+	pm = push origin master
+	po = push origin
+	pr = push --recurse-submodules=check
+	s = status
+	undo = reset --soft HEAD^
+	llog = log --date=local
+
+[core]
+	editor = "subl -w"
+[advice]
+	pushNonFastForward = false
