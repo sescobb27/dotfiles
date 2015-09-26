@@ -95,6 +95,7 @@ git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
 git clone https://github.com/godlygeek/tabular.git ~/.vim/bundle/tabular
 git clone https://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround
 git clone https://github.com/vim-ruby/vim-ruby.git ~/.vim/bundle/vim-ruby
+git clone https://github.com/elixir-lang/vim-elixir.git ~/.vim/bundle/vim-elixir
 # git clone https://github.com/rking/ag.vim ~/.vim/bundle
 # git clone  ~/.vim/bundle
 # git clone  ~/.vim/bundle
