@@ -16,7 +16,7 @@
 	stat = true
 
 [push]
-	default = tracking
+	default = current
 
 [help]
 	# Automatically correct and execute mistyped commands
@@ -46,6 +46,10 @@
 	llog = log --date=local
 
 [core]
-	editor = "subl -w"
+	editor = "subl -n -w"
+
 [advice]
 	pushNonFastForward = false
+
+[apply]
+	whitespace = nowarn
