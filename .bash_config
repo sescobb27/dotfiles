@@ -84,6 +84,7 @@ alias railsdir='cd ~/Documents/Rails/'
 
 # ==========GIT ALIASES========================================
 # =============================================================================================
+alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" 
 alias gitcl='git clone' #clone repo
 alias gitcm='git commit -m' #commit changes
 alias gitca='git commit -am' #add all changes and commit them
