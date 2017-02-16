@@ -1,0 +1,16 @@
+shell:history(9999).
+{ok, Cwd} = file:get_cwd().
+ModuleNames = [ list_to_atom(re:replace( filename:basename(F)
+                                       , "[.]beam$"
+                                       , ""
+                                       , [{return, list}]
+                                       ))
+               || P <- code:get_path()
+                , string:str(P, Cwd) /= 0
+                , F <- filelib:wildcard(filename:join(P, "*.beam"))
+                ],
+Modules =
+  [M || {module, M} <- [code:load_file(MN) || MN <- ModuleNames
+                                            , not code:is_sticky(MN)
+                                            ]].
+%io:format("Loaded Modules: ~p~n", [lists:sort(Modules)]).

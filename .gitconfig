@@ -48,6 +48,7 @@
 
 [core]
 	editor = "subl -n -w"
+	excludesfile = ~/.gitignore
 
 [advice]
 	pushNonFastForward = false
