@@ -88,8 +88,8 @@ alias gitcl='git clone' #clone repo
 alias gitcm='git commit -m' #commit changes
 alias gitca='git commit -am' #add all changes and commit them
 alias gita='git add' #add some changes, like new files
-alias gitpm='git push origin master' #push origin master
-alias gitpo='git push origin' #other branch
+alias gitpm='git push -u origin master' #push origin master
+alias gitpo='git push -u origin' #other branch
 alias gitpr='git push --recurse-submodules=check'
 alias gitp_p='git pull; git push origin' #git secure push first pull changes from remote repo, then push the changes COLLABORATION
 alias gitrm='git rm' #remove files from repo
