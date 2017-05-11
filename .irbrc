@@ -1,20 +1,13 @@
 require 'rubygems' unless defined? Gem
 require 'rb-readline'
-require 'fancy_irb'
+require 'hirb'
 require 'awesome_print'
+require 'irb/completion'
 
 IRB.conf[:AUTO_INDENT] = true
-FancyIrb.start colorize: {
-  rocket_prompt:  [:blue],
-  result_prompt: [:blue],
-  input_prompt: nil,
-  irb_errors: [:red],
-  stderr: [:red, :bright],
-  stdout: [:white],
-  input: nil, 
-  output: true
-}
 
+Hirb.enable
+extend Hirb::Console
 AwesomePrint.irb!
 
 def own_methods var
