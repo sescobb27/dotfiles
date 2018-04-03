@@ -11,30 +11,28 @@ if [ -f /etc/bash_completion.d/docker.io ]; then
   . /etc/bash_completion.d/docker.io
 fi
 
+if [ -f ~/.git-prompt.sh ]; then
+  source ~/.git-prompt.sh
+fi
+
 HUB_COMPLETION_PATH="$GOPATH/src/github.com/github/hub/etc/hub.bash_completion.sh"
 if [ -f $HUB_COMPLETION_PATH ]; then
   . $HUB_COMPLETION_PATH
 fi
 
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+if [ -f ~/kerl/20.1/activate ]; then
+  source ~/kerl/20.1/activate
+fi
+
 # search and kill
 # ps aux | grep rails | awk 'NR == 1 { print $2 };' | xargs sudo kill -9
-export EDITOR=vim
-PATH=$PATH:$GOROOT/bin
-PATH=$PATH:$GOPATH/bin
-GOPATH=$GOPATH:~/Documents/Go
+export EDITOR="code"
 PATH=$PATH:~/Documents/Erlang/rebar
-export GOMAXPROCS=8
-export GOROOT_BOOTSTRAP=/home/kiro/.gvm/gos/go1.4
-export GOARCH=amd64
-export GOHOSTARCH=amd64
-export GOHOSTOS=linux
-export CGO_ENABLED=1
-export CXX=g++
-export GOGCCFLAGS="-fPIC -m64 -pthread -fmessage-length=0"
-export CC=gcc
-export GOOS=linux
-export GOTRACEBACK=2
-export LD_LIBRARY_PATH=/usr/local/lib
+export PATH="$HOME/.yarn/bin:$PATH"
+
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 export RUBY_GC_MALLOC_LIMIT=16MB
 export RUBY_GC_MALLOC_LIMIT_MAX=32MB
@@ -45,6 +43,7 @@ export RUBY_GC_OLDMALLOC_LIMIT_GROWTH_FACTOR=1.2
 export RUBY_GC_HEAP_OLDOBJECT_LIMIT_FACTOR=1.3
 export PUMA_MIN_THREADS=16
 export PUMA_MAX_THREADS=32
+export EDITOR="subl"
 
 PATH=$PATH:/usr/local/heroku/bin
 # export JAVA_OPTS=$JAVA_OPTS:" -Xms1024m -Xmx2048m -XX:MaxPermSize=512m -XX:-UseGCOverheadLimit"
@@ -57,13 +56,13 @@ alias list_users='cat /etc/passwd | grep /bin/bash | grep -P ^[[:alnum:]]+ | cut
 # ==========RAILS ALIASES========================================
 alias dbmi='bundle exec rake db:migrate' #migrate database
 alias dbrol='bundle exec rake db:rollback' #rolls the database schema back to the previous version
-alias seed='bundle exec rake db:seed' #seed database
+alias dbse='bundle exec rake db:seed' #seed database
 alias dbre='bundle exec rake db:reset' #reset database
 alias dbcr='bundle exec rake db:create' #create database
 alias dbtp='bundle exec rake db:test:prepare' #prepare database for test
 alias dbdr='bundle exec rake db:drop' #drop database
 alias routes='bundle exec rake routes' #list all project routes
-alias tasks='bundle exec rake -T' #list all rake tasks
+alias rtasks='bundle exec rake -T' #list all rake tasks
 alias gemi='gem install' #gem install
 alias rgmo='rails g model' #rails generate model
 alias rgco='rails g controller' #rails generate controller
@@ -83,7 +82,7 @@ alias railsdir='cd ~/Documents/Rails/'
 
 # ==========GIT ALIASES========================================
 # =============================================================================================
-alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" 
+alias gitl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitcl='git clone' #clone repo
 alias gitcm='git commit -m' #commit changes
 alias gitca='git commit -am' #add all changes and commit them
@@ -118,4 +117,32 @@ alias gitdrb='git push origin --delete'
 alias stash='git stash'
 # ==========GIT ALIASES========================================
 # =============================================================================================
+
+# =============================================================================================
+# ==========ELIXIR ALIASES========================================
+alias mr='mix phx.routes'
+alias mdg='mix deps.get'
+alias mdu='mix deps.update'
+alias mc='mix compile'
+alias serve='iex -S mix phx.server'
+alias mg='mix ecto.migrate'
+alias mroll='mix ecto.rollback'
+alias hecto='mix help | grep ecto'
+alias hphx='mix help | grep -E "phx|phoenix"'
+alias iexm='iex -S mix'
+# ==========ELIXIR ALIASES========================================
+# =============================================================================================
+alias c='docker-compose'
+alias cb='docker-compose build'
+alias cup='docker-compose up'
+alias clogs='docker-compose logs'
+
 alias ports='netstat -tulpn'
+
+function rdb () {
+  export MIX_ENV=test
+  mix ecto.drop
+  mix ecto.create
+  mix ecto.migrate
+  unset MIX_ENV
+}
